@@ -16,6 +16,11 @@ CDirectionalLight	gLight;
 CPlayer				gPlayer;
 bool				gbDebug = false;
 
+CVector3    gCameraPosition;
+CVector3    gTargetPosition;
+CVector3    gUpVector;;
+
+
 
 
 /*************************************************************************//*!
