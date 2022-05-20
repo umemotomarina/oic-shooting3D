@@ -6,7 +6,11 @@
 CPlayer::CPlayer() :
 m_Mesh(),
 m_Pos(0.0f,0.0f,0.0f),
-m_RotZ(0.0f){
+m_RotZ(0.0f),
+m_ShotMesh(),
+m_ShotMesh(),
+m_ShotArray(),
+m_ShotWait(){
 }
 
 /**
@@ -24,6 +28,7 @@ bool CPlayer::Load(void){
 	{
 		return false;
 	}
+	//’e‚ÌƒƒbƒVƒ…
 	return true;
 }
 

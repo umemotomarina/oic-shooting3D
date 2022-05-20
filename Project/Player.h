@@ -1,9 +1,14 @@
 #pragma once
 
 #include "GameDefine.h"
+#include "PlayerShot.h"
 
 // ˆÚ“®‘¬“x
 #define PLAYER_SPEED		(0.1f)
+
+//’e‚Ì”­ËŒÀŠE”
+#define PLAYERSHOT_COUNT	(40)
+#define PLAYERSHOT_WAIT		(5)
 
 class CPlayer{
 private:

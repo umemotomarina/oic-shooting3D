@@ -10,15 +10,17 @@
 //INCLUDE
 #include	"GameApp.h"
 #include	"Player.h"
+#include	"Stage.h"
 
-CCamera		gCamera;
+CCamera				gCamera;
 CDirectionalLight	gLight;
 CPlayer				gPlayer;
+CStage				gStage;
 bool				gbDebug = false;
 
-CVector3    gCameraPosition;
-CVector3    gTargetPosition;
-CVector3    gUpVector;;
+CVector3		    gCameraPosition;
+CVector3			gTargetPosition;
+CVector3			gUpVector;;
 
 
 
@@ -46,7 +48,12 @@ MofBool CGameApp::Initialize(void){
 	CGraphicsUtilities::SetDirectionalLight(&gLight);
 
 	gPlayer.Load();
+	//ステージの素材読み込み
+	gStage.Load();
+
 	gPlayer.Initialize();
+	//ステージの状態初期化
+	gStage.Update();
 
 	
 	return TRUE;
@@ -61,6 +68,8 @@ MofBool CGameApp::Initialize(void){
 MofBool CGameApp::Update(void){
 	//キーの更新
 	g_pInput->RefreshKey();
+	//ステージの更新
+	gStage.Update();
 
 	gPlayer.Update();
 
@@ -95,6 +104,7 @@ MofBool CGameApp::Render(void){
 
 	g_pGraphics->SetDepthEnable(TRUE);
 
+	gStage.Render();
 	gPlayer.Render();
 
 	if (gbDebug)
@@ -108,6 +118,8 @@ MofBool CGameApp::Render(void){
 
 	if (gbDebug)
 	{
+		//ステージのデバッグ文字描画
+		gStage.RenderDebugText();
 		gPlayer.RenderDebugText();
 	}
 
@@ -124,5 +136,6 @@ MofBool CGameApp::Render(void){
 *//**************************************************************************/
 MofBool CGameApp::Release(void){
 	gPlayer.Release();
+	gStage.Release();
 	return TRUE;
 }
